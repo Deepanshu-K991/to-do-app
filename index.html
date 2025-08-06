@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Theme Toggle -->
+        <button class="theme-toggle" id="themeToggle">
+            <i class="fas fa-moon"></i>
+        </button>
+
+        <div class="container">
+            <header class="app-header">
+                <h1><i class="fas fa-tasks"></i>To-Do App</h1>
+                <div class="header-stats">
+                    <span id="totalTasks">0</span>
+                    <span id="completedTasks">0</span>
+                </div>
+            </header>
+            
+            <div class="input-section">
+                <div class="input-group">
+                    <input type="text" id="taskInput" placeholder="What needs to be done?" maxlength="200">
+                    <select id="prioritySelect" class="priority-select">
+                        <option value="low">Low Priority</option>
+                        <option value="medium" selected>Medium Priority</option>
+                        <option value="high">High Priority</option>
+                    </select>
+                    <select id="categorySelect" class="category-select">
+                        <option value="personal">Personal</option>
+                        <option value="work">Work</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="health">Health</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <button id="addBtn">
+                        <i class="fas fa-plus"></i>
+                        Add Task
+                    </button>
+                </div>
+                
+                <div class="quick-actions">
+                    <button id="addQuickTask" data-task="Buy groceries" data-priority="medium" data-category="shopping">
+                        <i class="fas fa-shopping-cart"></i> Groceries
+                    </button>
+                    <button id="addMeetingTask" data-task="Team meeting" data-priority="high" data-category="work">
+                        <i class="fas fa-users"></i> Meeting
+                    </button>
+                    <button id="addWorkoutTask" data-task="Daily workout" data-priority="medium" data-category="health">
+                        <i class="fas fa-dumbbell"></i> Workout
+                    </button>
+                </div>
+            </div>
+            
+            <div class="controls-section">
+                <div class="filter-controls">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class="fas fa-list"></i> All
+                    </button>
+                    <button class="filter-btn" data-filter="active">
+                        <i class="fas fa-clock"></i> Active
+                    </button>
+                    <button class="filter-btn" data-filter="completed">
+                        <i class="fas fa-check"></i> Completed
+                    </button>
+                </div>
+                
+                <div class="sort-controls">
+                    <select id="sortSelect">
+                        <option value="date">Sort by Date</option>
+                        <option value="priority">Sort by Priority</option>
+                        <option value="alphabetical">Sort A-Z</option>
+                        <option value="category">Sort by Category</option>
+                    </select>
+                </div>
+                
+                <div class="bulk-actions">
+                    <button id="selectAllBtn"><i class="fas fa-check-double"></i></button>
+                    <button id="deleteSelectedBtn"><i class="fas fa-trash"></i></button>
+                    <button id="clearCompletedBtn"><i class="fas fa-broom"></i></button>
+                </div>
+            </div>
+            
+            <div class="search-section">
+                <div class="search-input-group">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search tasks...">
+                    <button id="clearSearchBtn"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+            
+            <div class="stats-dashboard">
+                <div class="stat-card">
+                    <i class="fas fa-tasks"></i>
+                    <div>
+                        <span class="stat-number" id="taskCount">0</span>
+                        <span class="stat-label">Total Tasks</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-chart-line"></i>
+                    <div>
+                        <span class="stat-number" id="completionRate">0%</span>
+                        <span class="stat-label">Completion Rate</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-fire"></i>
+                    <div>
+                        <span class="stat-number" id="streak">0</span>
+                        <span class="stat-label">Day Streak</span>
+                    </div>
+                </div>
+            </div>
+            
+            <ul id="taskList" class="task-list">
+                <!-- Tasks will be added here dynamically -->
+            </ul>
+            
+            <div class="empty-state" id="emptyState">
+                <i class="fas fa-clipboard-check"></i>
+                <h3>No tasks yet!</h3>
+                <p>Add your first task above to get started</p>
+            </div>
+        </div>
+        
+        <!-- Notification Toast -->
+        <div id="toast" class="toast">
+            <div class="toast-content">
+                <i class="toast-icon"></i>
+                <span class="toast-message"></span>
+            </div>
+        </div>
+        
+        <!-- Confirmation Modal -->
+        <div id="confirmModal" class="modal">
+            <div class="modal-content">
+                <h3>Confirm Action</h3>
+                <p id="confirmMessage"></p>
+                <div class="modal-actions">
+                    <button id="confirmYes" class="btn-danger">Yes</button>
+                    <button id="confirmNo" class="btn-secondary">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
