@@ -1,4 +1,4 @@
-# Advanced To-Do List Web App
+# To-Do List Web App
 
 A feature-rich, modern to-do list application built with vanilla JavaScript, HTML5, and CSS3. This project demonstrates advanced front-end development techniques including local storage, theme switching, advanced filtering, and a beautiful responsive design.
 
